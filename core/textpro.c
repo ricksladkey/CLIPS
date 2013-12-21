@@ -122,7 +122,7 @@ struct lists
 #define BFORMAT "%d%1s%12s%s"   /*Format string for sscanf*/
 #define LIT_DELIM ('$')
 
-#define OPEN_READ "r"
+#define OPEN_READ "rb" /* fseek behavior not defined unless seekable. */
 
 #define TEXTPRO_DATA 8
 
@@ -195,8 +195,8 @@ globle int TextLookupFetch(
    fp = GenOpen(theEnv,file,OPEN_READ);
 
    if (fp == NULL)
-     {
-      PrintErrorID(theEnv,"TEXTPRO",1,FALSE);
+   {
+       PrintErrorID(theEnv,"TEXTPRO",1,FALSE);
       EnvPrintRouter(theEnv,WERROR,"Could not open file \"");
       EnvPrintRouter(theEnv,WERROR,file);
       EnvPrintRouter(theEnv,WERROR,"\".\n");
