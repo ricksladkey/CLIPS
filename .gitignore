@@ -12,3 +12,7 @@
 *.user
 microsoft_windows/VS2012/bin/
 microsoft_windows/VS2012/obj/
+test_suite/Actual/
+test_suite/Results/
+test_suite/Temp/
+test_suite/d.bins

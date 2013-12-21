@@ -348,7 +348,7 @@ globle int CompleteCommand(
          default:
            if (depth == 0)
              {
-              if (isprint(inchar) || IsUTF8MultiByteStart(inchar))
+              if (isprint((unsigned char) inchar) || IsUTF8MultiByteStart(inchar))
                 {
                  while ((inchar = mstring[i++]) != EOS)
                    {
