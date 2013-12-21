@@ -295,7 +295,7 @@ static int GetcInterfaceRouter(
 
    //UpdateCursor(QUESTION_CURSOR);
    SetCursor(LoadCursor(NULL,IDC_HELP));
-   SetClassLong(DialogWindow,GCL_HCURSOR,(LONG) LoadCursor(NULL,IDC_HELP));
+   SetClassLongPtr(DialogWindow,GCLP_HCURSOR,(LONG) LoadCursor(NULL,IDC_HELP));
 
    GetMessage(&msg,NULL,0,0);
    TranslateMessage(&msg);
@@ -318,7 +318,7 @@ static int GetcInterfaceRouter(
               count = 0;
               //UpdateCursor(ARROW_CURSOR);
 	  		  SetCursor(LoadCursor(NULL,IDC_ARROW));
-		      SetClassLong(DialogWindow,GCL_HCURSOR,(LONG) LoadCursor(NULL,IDC_ARROW));
+		      SetClassLongPtr(DialogWindow,GCLP_HCURSOR,(LONG) LoadCursor(NULL,IDC_ARROW));
               msg.wParam = '\n';
               break;
 
@@ -334,7 +334,7 @@ static int GetcInterfaceRouter(
       DispatchMessage(&msg);
       //UpdateCursor(QUESTION_CURSOR);
       SetCursor(LoadCursor(NULL,IDC_HELP));
-	  SetClassLong(DialogWindow,GCL_HCURSOR,(LONG) LoadCursor(NULL,IDC_HELP));
+	  SetClassLongPtr(DialogWindow,GCLP_HCURSOR,(LONG) LoadCursor(NULL,IDC_HELP));
 
       GetMessage(&msg,NULL,0,0);
       TranslateMessage(&msg);
@@ -358,7 +358,7 @@ static int InterfaceEventFunction(
    
      //UpdateCursor(ARROW_CURSOR);
 	 //SetCursor(LoadCursor(NULL,IDC_ARROW));
-	 //SetClassLong(DialogWindow,GCL_HCURSOR,(LONG) LoadCursor(NULL,IDC_ARROW));
+	 //SetClassLongPtr(DialogWindow,GCLP_HCURSOR,(LONG) LoadCursor(NULL,IDC_ARROW));
    
    /*============================*/
    /* Update the status windows. */

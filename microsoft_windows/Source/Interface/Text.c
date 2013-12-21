@@ -280,7 +280,7 @@ BOOL text_Revert(
    char szTemp[128];
    struct textWindowData *theData;
    
-   theData = (struct textWindowData *) GetWindowLong(hEditWnd,GWL_USERDATA);
+   theData = (struct textWindowData *) GetWindowLongPtr(hEditWnd,GWLP_USERDATA);
  
    
    /*===================================*/
@@ -315,7 +315,7 @@ BOOL text_Revert(
       if (theData == NULL) return(FALSE);
       
       strcpy((char *) &theData->fileName,(char *) fileName);
-      SetWindowLong(hEditWnd,GWL_USERDATA,(long) theData);
+      SetWindowLongPtr(hEditWnd,GWLP_USERDATA,(long) theData);
      }
    
    /*===================================================*/
@@ -398,8 +398,8 @@ BOOL text_SaveAs(
    /* so the save dialog will appear.    */
    /*====================================*/
    
-   oldData = (struct textWindowData *) GetWindowLong(hEditWnd,GWL_USERDATA);
-   SetWindowLong(hEditWnd,GWL_USERDATA,(long) NULL);
+   oldData = (struct textWindowData *) GetWindowLongPtr(hEditWnd,GWLP_USERDATA);
+   SetWindowLongPtr(hEditWnd,GWLP_USERDATA,(long) NULL);
    
    /*================*/
    /* Save the file. */
@@ -413,7 +413,7 @@ BOOL text_SaveAs(
    /* old window data.                        */
    /*=========================================*/
    
-   theData = (struct textWindowData *) GetWindowLong(hEditWnd,GWL_USERDATA);
+   theData = (struct textWindowData *) GetWindowLongPtr(hEditWnd,GWLP_USERDATA);
    if (theData != NULL) 
      {
       SetWindowText(hEditWnd,szFileName);
@@ -421,7 +421,7 @@ BOOL text_SaveAs(
         { free(oldData); }
      }
    else
-     { SetWindowLong(hEditWnd,GWL_USERDATA,(long) oldData); }
+     { SetWindowLongPtr(hEditWnd,GWLP_USERDATA,(long) oldData); }
    
    return(TRUE);
   }
@@ -451,7 +451,7 @@ BOOL text_Save(
    /* Get the window data. */
    /*======================*/
    
-   theData = (struct textWindowData *) GetWindowLong(hEditWnd,GWL_USERDATA);
+   theData = (struct textWindowData *) GetWindowLongPtr(hEditWnd,GWLP_USERDATA);
    if (theData == NULL)
      {
 	  if (! GetSaveFileName ((LPOPENFILENAME) &ofn))
@@ -462,7 +462,7 @@ BOOL text_Save(
         { return(FALSE); }
         
       strcpy((char *) &theData->fileName,(char *) szFileName);
-      SetWindowLong(hEditWnd,GWL_USERDATA,(long) theData);
+      SetWindowLongPtr(hEditWnd,GWLP_USERDATA,(long) theData);
       SetWindowText(hEditWnd,szFileName);
      }
 
@@ -585,7 +585,7 @@ static void text_OnDestroy(
   {
    struct textWindowData *theData;
    
-   theData = (struct textWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+   theData = (struct textWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    if (theData != NULL)
      { free(theData); }
  

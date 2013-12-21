@@ -46,8 +46,8 @@
 #include "frame.h"
 #include "findwnd.h"
 
-#define setProc(hwnd, proc) SetWindowLong(hwnd, GWL_USERDATA, (LPARAM)proc)
-#define getProc(hwnd)       (WNDPROC)GetWindowLong(hwnd, GWL_USERDATA)
+#define setProc(hwnd, proc) SetWindowLongPtr(hwnd, GWLP_USERDATA, (LPARAM)proc)
+#define getProc(hwnd)       (WNDPROC)GetWindowLongPtr(hwnd, GWLP_USERDATA)
 
 #define DEFAULT_COMMAND_MAX 20
 #define DISPLAY_FONT_NAME "Courier"
@@ -310,7 +310,7 @@ BOOL displayWindow_New(
    
    CreateTerminal(theData);
 
-   SetWindowLong(DialogWindow,GWL_USERDATA,(long) theData);
+   SetWindowLongPtr(DialogWindow,GWLP_USERDATA,(long) theData);
 
    SetScrollRange(DialogWindow,SB_HORZ,0,255,TRUE);
 
@@ -335,7 +335,7 @@ static void display_OnUpdateMenu(
 #endif
    struct displayWindowData *theData;
   
-   theData = (struct displayWindowData *) GetWindowLong(hdisplay,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(hdisplay,GWLP_USERDATA);
    
    if (theData == NULL)
      { return; }
@@ -428,7 +428,7 @@ static void display_OnSize(
    struct displayWindowData *theData;
    RECT rect;
 
-   theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
    if (theData == NULL) 
      { return; }
@@ -561,7 +561,7 @@ static void display_OnVScroll(
    struct displayWindowData *theData;
    RECT rect;
    
-   theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
    if (theData == NULL) 
      { return; }
@@ -645,7 +645,7 @@ static void display_OnHScroll(
    struct displayWindowData *theData;
    RECT rect;
    
-   theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
    if (theData == NULL) 
      { return; }
@@ -706,7 +706,7 @@ void display_OnSetFocus(
 #endif
    struct displayWindowData *theData;
    
-   theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
    if (theData == NULL) 
      { return; }
@@ -734,7 +734,7 @@ void display_OnKillFocus(
    POINT thePoint;
    struct displayWindowData *theData;
    
-   theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
    if (theData == NULL) 
      { return; }
@@ -775,7 +775,7 @@ static void display_OnMDIActivate(
         { DrawMenuBar(hMainFrame); }
      }
        
-   theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    if (theData == NULL) return;        
        
    InvertSelection(hwnd,theData);
@@ -816,7 +816,7 @@ static void display_OnCommand(
 
         tempText[p] = '\0';
           
-        theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+        theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
         DisplayPaste(hwnd,theData,tempText); 
 
         free(tempText);
@@ -825,7 +825,7 @@ static void display_OnCommand(
         return;  
 
       case ID_EDIT_COPY:
-        theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+        theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
         tempText = DisplaySelectionText(hwnd,theData,&length);
         if (tempText == NULL) return;
         
@@ -863,7 +863,7 @@ static void display_OnCommand(
         return;
 
       case ID_EDIT_SELECT_ALL:
-        theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+        theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
         RemoveSelection(hwnd,theData);
         
         theData->selectionLineStart = 0;
@@ -953,7 +953,7 @@ static void display_OnTimer(
 
    value++;
    
-   SetClassLong(DialogWindow,GCL_HCURSOR,(LONG) WAIT[value]);
+   SetClassLongPtr(DialogWindow,GCLP_HCURSOR,(LONG) WAIT[value]);
 
    if (ChildWindowFromPointEx(MDIClientWnd,thePoint,CWP_SKIPINVISIBLE | CWP_SKIPDISABLED) == DialogWindow)
      { SetCursor(WAIT[value]); }
@@ -998,7 +998,7 @@ static void display_OnKey(
    if (CommandLineData(theEnv)->EvaluatingTopLevelCommand || BatchActive(theEnv))
      { return; }          
           
-   theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
    if (theData == NULL) 
      { return; }
@@ -1142,7 +1142,7 @@ static void display_OnLButtonDown(
    int theLine, theCharacter;
    struct displayWindowData *theData;
  
-   theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
    if (theData == NULL) 
      { return; }
@@ -1204,7 +1204,7 @@ static void display_OnLButtonUp(
    
    if (GetCapture() != hwnd) return;
  
-   theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
    if (theData == NULL) 
      {
@@ -1306,7 +1306,7 @@ static void display_OnScrollTimer(
    
    if (GetCapture() != hwnd) return;   
 
-   theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
    if (theData == NULL) 
      { return; }
@@ -1544,7 +1544,7 @@ static void FreeTerminalText(
    int i;
    struct displayWindowData *theData;
    
-   theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
    if (theData == NULL) 
      { return; }
@@ -1568,7 +1568,7 @@ static void DeleteTerminal(
   {  
    struct displayWindowData *theData;
    
-   theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
    if (theData == NULL) 
      { return; }
@@ -1594,7 +1594,7 @@ static void RedrawTerminal(
    LOGFONT lf;
    HRGN theRegion;
 
-   theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
    if (theData == NULL) 
      { return; }
@@ -1736,7 +1736,7 @@ void DisplayLineCountAndStart(
   {
    struct displayWindowData *theData;
    
-   theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
    if (theData == NULL) 
      { return; }
@@ -1774,7 +1774,7 @@ int DisplayPrint(
    size_t oldsize, size;
    struct displayWindowData *theData;
    
-   theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
    if (theData == NULL) 
      { return(FALSE); }
@@ -1919,7 +1919,7 @@ static void SendToScreen(
    struct displayWindowData *theData;
    LOGFONT lf;
   
-   theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
    if (theData == NULL) 
      { return; }
@@ -2061,7 +2061,7 @@ void ClearDialogWnd(void)
   {
    struct displayWindowData *theData;
    
-   theData = (struct displayWindowData *) GetWindowLong(DialogWindow,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(DialogWindow,GWLP_USERDATA);
    
    if (theData == NULL) 
      { return; }
@@ -2119,7 +2119,7 @@ void GetUserCmd(
    POINT thePoint;
    void *theEnv;
    
-   theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
    if (theData == NULL) 
      { return; }
@@ -2547,7 +2547,7 @@ static void SaveDisplayWindow(
    FILE *fp;
    int lines, displayStart, iLineNum;
    
-   theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
    if (theData == NULL) return; 
 
@@ -2647,7 +2647,7 @@ void UpdateCursor(
         break;
      }
    
-   SetClassLong(DialogWindow,GCL_HCURSOR,(LONG) myCursor);
+   SetClassLongPtr(DialogWindow,GCLP_HCURSOR,(LONG) myCursor);
 
    if (ChildWindowFromPointEx(MDIClientWnd,thePoint,CWP_SKIPINVISIBLE | CWP_SKIPDISABLED) == DialogWindow)
      { SetCursor(myCursor); }
@@ -2708,7 +2708,7 @@ globle int DisplayBeforeCommandExecution(
    /* that cause a completed command to be formed.       */
    /*====================================================*/
    
-   theData = (struct displayWindowData *) GetWindowLong(DialogWindow,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(DialogWindow,GWLP_USERDATA);
    
    if (theData->caretOffset != 0)
      { return FALSE; }
@@ -2818,7 +2818,7 @@ static void SwitchCommand(
    /* time a command is changed.       */
    /*==================================*/
    
-   theData = (struct displayWindowData *) GetWindowLong(DialogWindow,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(DialogWindow,GWLP_USERDATA);
    
    theData->caretOffset = 0;
    theData->caretLinesBack = 0;
@@ -2878,7 +2878,7 @@ void ClearCommandFromDisplay(
    /* time a command is removed.       */
    /*==================================*/
    
-   theData = (struct displayWindowData *) GetWindowLong(DialogWindow,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(DialogWindow,GWLP_USERDATA);
    
    theData->caretOffset = 0;
    theData->caretLinesBack = 0;
@@ -3187,7 +3187,7 @@ static void FindInsertionPoint(
    /* Retrieve the window data. */
    /*===========================*/
    
-   theData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+   theData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
    if (theData == NULL) 
      { return; }

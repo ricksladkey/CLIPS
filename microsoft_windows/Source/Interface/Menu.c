@@ -488,7 +488,7 @@ void UpdateMenu(
 
          //StartWaitCursor();
 		 SetCursor(LoadCursor(NULL,IDC_WAIT));
-		 SetClassLong(DialogWindow,GCL_HCURSOR,(LONG) LoadCursor(NULL,IDC_WAIT));
+		 SetClassLongPtr(DialogWindow,GCLP_HCURSOR,(LONG) LoadCursor(NULL,IDC_WAIT));
         }
       else
         {  
@@ -521,7 +521,7 @@ void UpdateMenu(
         {  
          value = 1;
 		 SetCursor(LoadCursor(NULL,IDC_WAIT));
-		 SetClassLong(DialogWindow,GCL_HCURSOR,(LONG) LoadCursor(NULL,IDC_WAIT));
+		 SetClassLongPtr(DialogWindow,GCLP_HCURSOR,(LONG) LoadCursor(NULL,IDC_WAIT));
 
          /*=======================================*/
          /* Enable File, Execute & Browse Menu    */
@@ -552,7 +552,7 @@ void UpdateMenu(
          
          //StopWaitCursor();
 		 SetCursor(LoadCursor(NULL,IDC_ARROW));
-		 SetClassLong(DialogWindow,GCL_HCURSOR,(LONG) LoadCursor(NULL,IDC_ARROW));
+		 SetClassLongPtr(DialogWindow,GCLP_HCURSOR,(LONG) LoadCursor(NULL,IDC_ARROW));
         }
 
       /*-----------------------------------+

@@ -175,7 +175,7 @@ BOOL PrintWindowDriver(
    /* If there is nothing to print then return. */
    /*===========================================*/
    
-   if (((ATOM) GetClassLong(hwnd,GCW_ATOM)) == EditAtomClass)
+   if (((ATOM) GetClassLongPtr(hwnd,GCW_ATOM)) == EditAtomClass)
 	 {
 	  hwndEdit = GetDlgItem(hwnd,ID_EDIT_CONTROL);
 
@@ -183,9 +183,9 @@ BOOL PrintWindowDriver(
 
 	  ofont = GetWindowFont(hwndEdit);
 	 }
-   else if (((ATOM) GetClassLong(hwnd,GCW_ATOM)) == StatusAtomClass)
+   else if (((ATOM) GetClassLongPtr(hwnd,GCW_ATOM)) == StatusAtomClass)
      {   
-      theStatusData = (struct statusWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+      theStatusData = (struct statusWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
       if (theStatusData == NULL) 
         { return TRUE; }
@@ -198,9 +198,9 @@ BOOL PrintWindowDriver(
       ofont = CreateFontIndirect(&lf);
       deleteFont = TRUE;
      }
-   else if (((ATOM) GetClassLong(hwnd,GCW_ATOM)) == DisplayAtomClass)
+   else if (((ATOM) GetClassLongPtr(hwnd,GCW_ATOM)) == DisplayAtomClass)
      {
-      theDisplayData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+      theDisplayData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
       if (theDisplayData == NULL) 
         { return TRUE; }
@@ -325,7 +325,7 @@ static BOOL PrintIt(
    HWND hwndEdit;
    struct statusWindowData *theStatusData;
    struct displayWindowData *theDisplayData;
-   ATOM theAtom = (unsigned short) GetClassLong(hwnd,GCW_ATOM);
+   ATOM theAtom = (unsigned short) GetClassLongPtr(hwnd,GCW_ATOM);
    void *valuePtr;
    int count;
    int dummy, displayStart;
@@ -336,14 +336,14 @@ static BOOL PrintIt(
      }
    else if (theAtom == StatusAtomClass)
      {   
-      theStatusData = (struct statusWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+      theStatusData = (struct statusWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
       if (theStatusData == NULL) 
         { return TRUE; }
      }
    else if (theAtom == DisplayAtomClass)
      {
-      theDisplayData = (struct displayWindowData *) GetWindowLong(hwnd,GWL_USERDATA);
+      theDisplayData = (struct displayWindowData *) GetWindowLongPtr(hwnd,GWLP_USERDATA);
    
       if (theDisplayData == NULL) 
         { return TRUE; }
@@ -379,7 +379,7 @@ static BOOL PrintIt(
             if (StartPage(PrintDialog.hDC) < 0)
               { return(FALSE); }
             
-            if (((ATOM) GetClassLong(hwnd,GCW_ATOM)) == EditAtomClass)
+            if (((ATOM) GetClassLongPtr(hwnd,GCW_ATOM)) == EditAtomClass)
               {
                for (iLine = 0 ; iLine < iLinesPerPage ; iLine++)
                  {
@@ -395,7 +395,7 @@ static BOOL PrintIt(
                                               (LPARAM) pstrBuffer)) ;
                  }
               }
-			else if (((ATOM) GetClassLong(hwnd,GCW_ATOM)) == StatusAtomClass)
+			else if (((ATOM) GetClassLongPtr(hwnd,GCW_ATOM)) == StatusAtomClass)
               {                  
                iLineNum = iLinesPerPage * iPage;
                iLine = 0;
@@ -414,7 +414,7 @@ static BOOL PrintIt(
                   iLine++;
                  }  
               }
-			else if (((ATOM) GetClassLong(hwnd,GCW_ATOM)) == DisplayAtomClass)
+			else if (((ATOM) GetClassLongPtr(hwnd,GCW_ATOM)) == DisplayAtomClass)
               {                  
                iLineNum = (iLinesPerPage * iPage) + displayStart;
                if (iLineNum > DIALOG_SIZE)

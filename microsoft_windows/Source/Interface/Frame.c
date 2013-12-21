@@ -1568,13 +1568,13 @@ static void mainframe_OnInitMenuPopup(
      {
       EnableMenuItem(hmenu,ID_FILE_SAVE_AS,MF_ENABLED);                                                         
       modified = Edit_GetModify(GetDlgItem(child,ID_EDIT_CONTROL));
-      if (GetWindowLong(child,GWL_USERDATA) == 0L)
+      if (GetWindowLongPtr(child,GWLP_USERDATA) == 0L)
         { modified = TRUE; }
       EnableMenuItem(hmenu,ID_FILE_SAVE,(UINT) (modified ? MF_ENABLED : MF_GRAYED));
       
       EnableMenuItem(hmenu,ID_FILE_REVERT,
                      (UINT) (modified ?
-                             ((GetWindowLong(child,GWL_USERDATA) != 0L) ? 
+                             ((GetWindowLongPtr(child,GWLP_USERDATA) != 0L) ? 
                                MF_ENABLED : MF_GRAYED) : MF_GRAYED));
      }
    else
