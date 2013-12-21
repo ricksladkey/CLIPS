@@ -1,0 +1,526 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FA537670-9905-4730-93B8-F771221DFA22}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.61030.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)</OutDir>
+    <IntDir>$(SolutionDir)\Objects\CLIPSWin\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)</OutDir>
+    <IntDir>$(SolutionDir)\Objects\CLIPSWin\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Objects/CLIPSWin.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/D WINVER=0x0501 /D _WIN32_WINNT=0x0501 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN_MVC=1;WINDOW_INTERFACE=1;WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeaderOutputFile>.\Objects/CLIPSWin.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation />
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)vc80.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ProgramDatabaseFile>.\Objects/CLIPSWin.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Objects/CLIPSWin.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN_MVC=1;WINDOW_INTERFACE=1;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeaderOutputFile>.\Objects/CLIPSWin.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation />
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)vc80.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\Objects/CLIPSWin.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\core\agenda.c" />
+    <ClCompile Include="..\..\core\analysis.c" />
+    <ClCompile Include="..\..\core\argacces.c" />
+    <ClCompile Include="..\Source\Interface\Balance.c" />
+    <ClCompile Include="..\..\core\bload.c" />
+    <ClCompile Include="..\..\core\bmathfun.c" />
+    <ClCompile Include="..\..\core\bsave.c" />
+    <ClCompile Include="..\..\core\classcom.c" />
+    <ClCompile Include="..\..\core\classexm.c" />
+    <ClCompile Include="..\..\core\classfun.c" />
+    <ClCompile Include="..\..\core\classinf.c" />
+    <ClCompile Include="..\..\core\classini.c" />
+    <ClCompile Include="..\..\core\classpsr.c" />
+    <ClCompile Include="..\Source\Interface\clipsdde.c" />
+    <ClCompile Include="..\..\core\clsltpsr.c" />
+    <ClCompile Include="..\..\core\commline.c" />
+    <ClCompile Include="..\..\core\conscomp.c" />
+    <ClCompile Include="..\..\core\constrct.c" />
+    <ClCompile Include="..\..\core\constrnt.c" />
+    <ClCompile Include="..\..\core\crstrtgy.c" />
+    <ClCompile Include="..\..\core\cstrcbin.c" />
+    <ClCompile Include="..\..\core\cstrccom.c" />
+    <ClCompile Include="..\..\core\cstrcpsr.c" />
+    <ClCompile Include="..\..\core\cstrnbin.c" />
+    <ClCompile Include="..\..\core\cstrnchk.c" />
+    <ClCompile Include="..\..\core\cstrncmp.c" />
+    <ClCompile Include="..\..\core\cstrnops.c" />
+    <ClCompile Include="..\..\core\cstrnpsr.c" />
+    <ClCompile Include="..\..\core\cstrnutl.c" />
+    <ClCompile Include="..\..\core\default.c" />
+    <ClCompile Include="..\..\core\defins.c" />
+    <ClCompile Include="..\..\core\developr.c" />
+    <ClCompile Include="..\..\core\dffctbin.c" />
+    <ClCompile Include="..\..\core\dffctbsc.c" />
+    <ClCompile Include="..\..\core\dffctcmp.c" />
+    <ClCompile Include="..\..\core\dffctdef.c" />
+    <ClCompile Include="..\..\core\dffctpsr.c" />
+    <ClCompile Include="..\..\core\dffnxbin.c" />
+    <ClCompile Include="..\..\core\dffnxcmp.c" />
+    <ClCompile Include="..\..\core\dffnxexe.c" />
+    <ClCompile Include="..\..\core\dffnxfun.c" />
+    <ClCompile Include="..\..\core\dffnxpsr.c" />
+    <ClCompile Include="..\..\core\dfinsbin.c" />
+    <ClCompile Include="..\..\core\dfinscmp.c" />
+    <ClCompile Include="..\Source\Interface\Dialog1.c" />
+    <ClCompile Include="..\Source\Interface\Dialog2.c" />
+    <ClCompile Include="..\Source\Interface\Display.c" />
+    <ClCompile Include="..\..\core\drive.c" />
+    <ClCompile Include="..\..\core\edbasic.c" />
+    <ClCompile Include="..\Source\Interface\Edit.c" />
+    <ClCompile Include="..\Source\Interface\EditUtil.c" />
+    <ClCompile Include="..\..\core\edmain.c" />
+    <ClCompile Include="..\..\core\edmisc.c" />
+    <ClCompile Include="..\..\core\edstruct.c" />
+    <ClCompile Include="..\..\core\edterm.c" />
+    <ClCompile Include="..\..\core\emathfun.c" />
+    <ClCompile Include="..\..\core\engine.c" />
+    <ClCompile Include="..\..\core\envrnmnt.c" />
+    <ClCompile Include="..\..\core\evaluatn.c" />
+    <ClCompile Include="..\..\core\expressn.c" />
+    <ClCompile Include="..\..\core\exprnbin.c" />
+    <ClCompile Include="..\..\core\exprnops.c" />
+    <ClCompile Include="..\..\core\exprnpsr.c" />
+    <ClCompile Include="..\..\core\extnfunc.c" />
+    <ClCompile Include="..\..\core\factbin.c" />
+    <ClCompile Include="..\..\core\factbld.c" />
+    <ClCompile Include="..\..\core\factcmp.c" />
+    <ClCompile Include="..\..\core\factcom.c" />
+    <ClCompile Include="..\..\core\factfun.c" />
+    <ClCompile Include="..\..\core\factgen.c" />
+    <ClCompile Include="..\..\core\facthsh.c" />
+    <ClCompile Include="..\..\core\factlhs.c" />
+    <ClCompile Include="..\..\core\factmch.c" />
+    <ClCompile Include="..\..\core\factmngr.c" />
+    <ClCompile Include="..\..\core\factprt.c" />
+    <ClCompile Include="..\..\core\factqpsr.c" />
+    <ClCompile Include="..\..\core\factqury.c" />
+    <ClCompile Include="..\..\core\factrete.c" />
+    <ClCompile Include="..\..\core\factrhs.c" />
+    <ClCompile Include="..\..\core\filecom.c" />
+    <ClCompile Include="..\..\core\filertr.c" />
+    <ClCompile Include="..\Source\Interface\FindWnd.c" />
+    <ClCompile Include="..\Source\Interface\Frame.c" />
+    <ClCompile Include="..\..\core\generate.c" />
+    <ClCompile Include="..\..\core\genrcbin.c" />
+    <ClCompile Include="..\..\core\genrccmp.c" />
+    <ClCompile Include="..\..\core\genrccom.c" />
+    <ClCompile Include="..\..\core\genrcexe.c" />
+    <ClCompile Include="..\..\core\genrcfun.c" />
+    <ClCompile Include="..\..\core\genrcpsr.c" />
+    <ClCompile Include="..\..\core\globlbin.c" />
+    <ClCompile Include="..\..\core\globlbsc.c" />
+    <ClCompile Include="..\..\core\globlcmp.c" />
+    <ClCompile Include="..\..\core\globlcom.c" />
+    <ClCompile Include="..\..\core\globldef.c" />
+    <ClCompile Include="..\..\core\globlpsr.c" />
+    <ClCompile Include="..\..\core\immthpsr.c" />
+    <ClCompile Include="..\..\core\incrrset.c" />
+    <ClCompile Include="..\..\core\inherpsr.c" />
+    <ClCompile Include="..\Source\Interface\Initialization.c" />
+    <ClCompile Include="..\..\core\inscom.c" />
+    <ClCompile Include="..\..\core\insfile.c" />
+    <ClCompile Include="..\..\core\insfun.c" />
+    <ClCompile Include="..\..\core\insmngr.c" />
+    <ClCompile Include="..\..\core\insmoddp.c" />
+    <ClCompile Include="..\..\core\insmult.c" />
+    <ClCompile Include="..\..\core\inspsr.c" />
+    <ClCompile Include="..\..\core\insquery.c" />
+    <ClCompile Include="..\..\core\insqypsr.c" />
+    <ClCompile Include="..\..\core\iofun.c" />
+    <ClCompile Include="..\..\core\lgcldpnd.c" />
+    <ClCompile Include="..\Source\Interface\MainFrameToolbar.c" />
+    <ClCompile Include="..\Source\Interface\MDI.c" />
+    <ClCompile Include="..\..\core\memalloc.c" />
+    <ClCompile Include="..\Source\Interface\Menu.c" />
+    <ClCompile Include="..\Source\Interface\Menucmds.c" />
+    <ClCompile Include="..\..\core\miscfun.c" />
+    <ClCompile Include="..\..\core\modulbin.c" />
+    <ClCompile Include="..\..\core\modulbsc.c" />
+    <ClCompile Include="..\..\core\modulcmp.c" />
+    <ClCompile Include="..\..\core\moduldef.c" />
+    <ClCompile Include="..\..\core\modulpsr.c" />
+    <ClCompile Include="..\..\core\modulutl.c" />
+    <ClCompile Include="..\..\core\msgcom.c" />
+    <ClCompile Include="..\..\core\msgfun.c" />
+    <ClCompile Include="..\..\core\msgpass.c" />
+    <ClCompile Include="..\..\core\msgpsr.c" />
+    <ClCompile Include="..\..\core\multifld.c" />
+    <ClCompile Include="..\..\core\multifun.c" />
+    <ClCompile Include="..\..\core\objbin.c" />
+    <ClCompile Include="..\..\core\objcmp.c" />
+    <ClCompile Include="..\..\core\objrtbin.c" />
+    <ClCompile Include="..\..\core\objrtbld.c" />
+    <ClCompile Include="..\..\core\objrtcmp.c" />
+    <ClCompile Include="..\..\core\objrtfnx.c" />
+    <ClCompile Include="..\..\core\objrtgen.c" />
+    <ClCompile Include="..\..\core\objrtmch.c" />
+    <ClCompile Include="..\..\core\parsefun.c" />
+    <ClCompile Include="..\..\core\pattern.c" />
+    <ClCompile Include="..\..\core\pprint.c" />
+    <ClCompile Include="..\..\core\prccode.c" />
+    <ClCompile Include="..\..\core\prcdrfun.c" />
+    <ClCompile Include="..\..\core\prcdrpsr.c" />
+    <ClCompile Include="..\..\core\prdctfun.c" />
+    <ClCompile Include="..\Source\Interface\Print.c" />
+    <ClCompile Include="..\..\core\prntutil.c" />
+    <ClCompile Include="..\..\core\proflfun.c" />
+    <ClCompile Include="..\Source\Interface\Registry.c" />
+    <ClCompile Include="..\..\core\reorder.c" />
+    <ClCompile Include="..\..\core\reteutil.c" />
+    <ClCompile Include="..\..\core\retract.c" />
+    <ClCompile Include="..\..\core\router.c" />
+    <ClCompile Include="..\..\core\rulebin.c" />
+    <ClCompile Include="..\..\core\rulebld.c" />
+    <ClCompile Include="..\..\core\rulebsc.c" />
+    <ClCompile Include="..\..\core\rulecmp.c" />
+    <ClCompile Include="..\..\core\rulecom.c" />
+    <ClCompile Include="..\..\core\rulecstr.c" />
+    <ClCompile Include="..\..\core\ruledef.c" />
+    <ClCompile Include="..\..\core\ruledlt.c" />
+    <ClCompile Include="..\..\core\rulelhs.c" />
+    <ClCompile Include="..\..\core\rulepsr.c" />
+    <ClCompile Include="..\..\core\scanner.c" />
+    <ClCompile Include="..\Source\Interface\SearchDialog.c" />
+    <ClCompile Include="..\..\core\sortfun.c" />
+    <ClCompile Include="..\Source\Interface\Status.c" />
+    <ClCompile Include="..\..\core\strngfun.c" />
+    <ClCompile Include="..\..\core\strngrtr.c" />
+    <ClCompile Include="..\..\core\symblbin.c" />
+    <ClCompile Include="..\..\core\symblcmp.c" />
+    <ClCompile Include="..\..\core\symbol.c" />
+    <ClCompile Include="..\..\core\sysdep.c" />
+    <ClCompile Include="..\Source\Interface\Text.c" />
+    <ClCompile Include="..\..\core\textpro.c" />
+    <ClCompile Include="..\..\core\tmpltbin.c" />
+    <ClCompile Include="..\..\core\tmpltbsc.c" />
+    <ClCompile Include="..\..\core\tmpltcmp.c" />
+    <ClCompile Include="..\..\core\tmpltdef.c" />
+    <ClCompile Include="..\..\core\tmpltfun.c" />
+    <ClCompile Include="..\..\core\tmpltlhs.c" />
+    <ClCompile Include="..\..\core\tmpltpsr.c" />
+    <ClCompile Include="..\..\core\tmpltrhs.c" />
+    <ClCompile Include="..\..\core\tmpltutl.c" />
+    <ClCompile Include="..\..\core\userdata.c" />
+    <ClCompile Include="..\..\core\userfunctions.c" />
+    <ClCompile Include="..\..\core\utility.c" />
+    <ClCompile Include="..\..\core\watch.c" />
+    <ClCompile Include="..\Source\Interface\WinMain.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\core\agenda.h" />
+    <ClInclude Include="..\..\core\analysis.h" />
+    <ClInclude Include="..\..\core\argacces.h" />
+    <ClInclude Include="..\Source\Interface\Balance.h" />
+    <ClInclude Include="..\..\core\bload.h" />
+    <ClInclude Include="..\..\core\bmathfun.h" />
+    <ClInclude Include="..\..\core\bsave.h" />
+    <ClInclude Include="..\..\core\classcom.h" />
+    <ClInclude Include="..\..\core\classexm.h" />
+    <ClInclude Include="..\..\core\classfun.h" />
+    <ClInclude Include="..\..\core\classinf.h" />
+    <ClInclude Include="..\..\core\classini.h" />
+    <ClInclude Include="..\..\core\classpsr.h" />
+    <ClInclude Include="..\..\core\clips.h" />
+    <ClInclude Include="..\Source\Interface\clipsdde.h" />
+    <ClInclude Include="..\..\core\clsltpsr.h" />
+    <ClInclude Include="..\..\core\cmptblty.h" />
+    <ClInclude Include="..\..\core\commline.h" />
+    <ClInclude Include="..\..\core\conscomp.h" />
+    <ClInclude Include="..\..\core\constant.h" />
+    <ClInclude Include="..\..\core\constrct.h" />
+    <ClInclude Include="..\..\core\constrnt.h" />
+    <ClInclude Include="..\..\core\crstrtgy.h" />
+    <ClInclude Include="..\..\core\cstrcbin.h" />
+    <ClInclude Include="..\..\core\cstrccmp.h" />
+    <ClInclude Include="..\..\core\cstrccom.h" />
+    <ClInclude Include="..\..\core\cstrcpsr.h" />
+    <ClInclude Include="..\..\core\cstrnbin.h" />
+    <ClInclude Include="..\..\core\cstrnchk.h" />
+    <ClInclude Include="..\..\core\cstrncmp.h" />
+    <ClInclude Include="..\..\core\cstrnops.h" />
+    <ClInclude Include="..\..\core\cstrnpsr.h" />
+    <ClInclude Include="..\..\core\cstrnutl.h" />
+    <ClInclude Include="..\..\core\default.h" />
+    <ClInclude Include="..\..\core\defins.h" />
+    <ClInclude Include="..\..\core\developr.h" />
+    <ClInclude Include="..\..\core\dffctbin.h" />
+    <ClInclude Include="..\..\core\dffctbsc.h" />
+    <ClInclude Include="..\..\core\dffctcmp.h" />
+    <ClInclude Include="..\..\core\dffctdef.h" />
+    <ClInclude Include="..\..\core\dffctpsr.h" />
+    <ClInclude Include="..\..\core\dffnxbin.h" />
+    <ClInclude Include="..\..\core\dffnxcmp.h" />
+    <ClInclude Include="..\..\core\dffnxexe.h" />
+    <ClInclude Include="..\..\core\dffnxfun.h" />
+    <ClInclude Include="..\..\core\dffnxpsr.h" />
+    <ClInclude Include="..\..\core\dfinsbin.h" />
+    <ClInclude Include="..\..\core\dfinscmp.h" />
+    <ClInclude Include="..\Source\Interface\Dialog1.h" />
+    <ClInclude Include="..\Source\Interface\Dialog2.h" />
+    <ClInclude Include="..\Source\Interface\Display.h" />
+    <ClInclude Include="..\..\core\drive.h" />
+    <ClInclude Include="..\..\core\ed.h" />
+    <ClInclude Include="..\Source\Interface\Edit.h" />
+    <ClInclude Include="..\Source\Interface\EditUtil.h" />
+    <ClInclude Include="..\..\core\emathfun.h" />
+    <ClInclude Include="..\..\core\engine.h" />
+    <ClInclude Include="..\..\core\envrnmnt.h" />
+    <ClInclude Include="..\..\core\evaluatn.h" />
+    <ClInclude Include="..\..\core\expressn.h" />
+    <ClInclude Include="..\..\core\exprnbin.h" />
+    <ClInclude Include="..\..\core\exprnops.h" />
+    <ClInclude Include="..\..\core\exprnpsr.h" />
+    <ClInclude Include="..\Source\Interface\Extensions.h" />
+    <ClInclude Include="..\..\core\extnfunc.h" />
+    <ClInclude Include="..\..\core\factbin.h" />
+    <ClInclude Include="..\..\core\factbld.h" />
+    <ClInclude Include="..\..\core\factcmp.h" />
+    <ClInclude Include="..\..\core\factcom.h" />
+    <ClInclude Include="..\..\core\factfun.h" />
+    <ClInclude Include="..\..\core\factgen.h" />
+    <ClInclude Include="..\..\core\facthsh.h" />
+    <ClInclude Include="..\..\core\factlhs.h" />
+    <ClInclude Include="..\..\core\factmch.h" />
+    <ClInclude Include="..\..\core\factmngr.h" />
+    <ClInclude Include="..\..\core\factprt.h" />
+    <ClInclude Include="..\..\core\factqpsr.h" />
+    <ClInclude Include="..\..\core\factqury.h" />
+    <ClInclude Include="..\..\core\factrete.h" />
+    <ClInclude Include="..\..\core\factrhs.h" />
+    <ClInclude Include="..\..\core\filecom.h" />
+    <ClInclude Include="..\..\core\filertr.h" />
+    <ClInclude Include="..\Source\Interface\FindWnd.h" />
+    <ClInclude Include="..\Source\Interface\Frame.h" />
+    <ClInclude Include="..\..\core\generate.h" />
+    <ClInclude Include="..\..\core\genrcbin.h" />
+    <ClInclude Include="..\..\core\genrccmp.h" />
+    <ClInclude Include="..\..\core\genrccom.h" />
+    <ClInclude Include="..\..\core\genrcexe.h" />
+    <ClInclude Include="..\..\core\genrcfun.h" />
+    <ClInclude Include="..\..\core\genrcpsr.h" />
+    <ClInclude Include="..\..\core\globlbin.h" />
+    <ClInclude Include="..\..\core\globlbsc.h" />
+    <ClInclude Include="..\..\core\globlcmp.h" />
+    <ClInclude Include="..\..\core\globlcom.h" />
+    <ClInclude Include="..\..\core\globldef.h" />
+    <ClInclude Include="..\..\core\globlpsr.h" />
+    <ClInclude Include="..\..\core\immthpsr.h" />
+    <ClInclude Include="..\..\core\incrrset.h" />
+    <ClInclude Include="..\..\core\inherpsr.h" />
+    <ClInclude Include="..\Source\Interface\Initialization.h" />
+    <ClInclude Include="..\..\core\inscom.h" />
+    <ClInclude Include="..\..\core\insfile.h" />
+    <ClInclude Include="..\..\core\insfun.h" />
+    <ClInclude Include="..\..\core\insmngr.h" />
+    <ClInclude Include="..\..\core\insmoddp.h" />
+    <ClInclude Include="..\..\core\insmult.h" />
+    <ClInclude Include="..\..\core\inspsr.h" />
+    <ClInclude Include="..\..\core\insquery.h" />
+    <ClInclude Include="..\..\core\insqypsr.h" />
+    <ClInclude Include="..\..\core\iofun.h" />
+    <ClInclude Include="..\..\core\lgcldpnd.h" />
+    <ClInclude Include="..\Source\Interface\MainFrameToolbar.h" />
+    <ClInclude Include="..\..\core\match.h" />
+    <ClInclude Include="..\Source\Interface\MDI.h" />
+    <ClInclude Include="..\Source\Interface\MDICLIPS.h" />
+    <ClInclude Include="..\..\core\memalloc.h" />
+    <ClInclude Include="..\Source\Interface\Menu.h" />
+    <ClInclude Include="..\Source\Interface\Menucmds.h" />
+    <ClInclude Include="..\..\core\miscfun.h" />
+    <ClInclude Include="..\..\core\modulbin.h" />
+    <ClInclude Include="..\..\core\modulbsc.h" />
+    <ClInclude Include="..\..\core\modulcmp.h" />
+    <ClInclude Include="..\..\core\moduldef.h" />
+    <ClInclude Include="..\..\core\modulpsr.h" />
+    <ClInclude Include="..\..\core\modulutl.h" />
+    <ClInclude Include="..\..\core\msgcom.h" />
+    <ClInclude Include="..\..\core\msgfun.h" />
+    <ClInclude Include="..\..\core\msgpass.h" />
+    <ClInclude Include="..\..\core\msgpsr.h" />
+    <ClInclude Include="..\..\core\multifld.h" />
+    <ClInclude Include="..\..\core\multifun.h" />
+    <ClInclude Include="..\..\core\network.h" />
+    <ClInclude Include="..\..\core\objbin.h" />
+    <ClInclude Include="..\..\core\objcmp.h" />
+    <ClInclude Include="..\..\core\object.h" />
+    <ClInclude Include="..\..\core\objrtbin.h" />
+    <ClInclude Include="..\..\core\objrtbld.h" />
+    <ClInclude Include="..\..\core\objrtcmp.h" />
+    <ClInclude Include="..\..\core\objrtfnx.h" />
+    <ClInclude Include="..\..\core\objrtgen.h" />
+    <ClInclude Include="..\..\core\objrtmch.h" />
+    <ClInclude Include="..\..\core\parsefun.h" />
+    <ClInclude Include="..\..\core\pattern.h" />
+    <ClInclude Include="..\..\core\pprint.h" />
+    <ClInclude Include="..\..\core\prccode.h" />
+    <ClInclude Include="..\..\core\prcdrfun.h" />
+    <ClInclude Include="..\..\core\prcdrpsr.h" />
+    <ClInclude Include="..\..\core\prdctfun.h" />
+    <ClInclude Include="..\Source\Interface\Print.h" />
+    <ClInclude Include="..\..\core\prntutil.h" />
+    <ClInclude Include="..\..\core\proflfun.h" />
+    <ClInclude Include="..\Source\Interface\Registry.h" />
+    <ClInclude Include="..\..\core\reorder.h" />
+    <ClInclude Include="..\Source\Interface\Resource.h" />
+    <ClInclude Include="..\..\core\reteutil.h" />
+    <ClInclude Include="..\..\core\retract.h" />
+    <ClInclude Include="..\..\core\router.h" />
+    <ClInclude Include="..\..\core\rulebin.h" />
+    <ClInclude Include="..\..\core\rulebld.h" />
+    <ClInclude Include="..\..\core\rulebsc.h" />
+    <ClInclude Include="..\..\core\rulecmp.h" />
+    <ClInclude Include="..\..\core\rulecom.h" />
+    <ClInclude Include="..\..\core\rulecstr.h" />
+    <ClInclude Include="..\..\core\ruledef.h" />
+    <ClInclude Include="..\..\core\ruledlt.h" />
+    <ClInclude Include="..\..\core\rulelhs.h" />
+    <ClInclude Include="..\..\core\rulepsr.h" />
+    <ClInclude Include="..\..\core\scanner.h" />
+    <ClInclude Include="..\Source\Interface\SearchDialog.h" />
+    <ClInclude Include="..\..\core\setup.h" />
+    <ClInclude Include="..\..\core\sortfun.h" />
+    <ClInclude Include="..\Source\Interface\Status.h" />
+    <ClInclude Include="..\Source\Interface\StdSDK.h" />
+    <ClInclude Include="..\..\core\strngfun.h" />
+    <ClInclude Include="..\..\core\strngrtr.h" />
+    <ClInclude Include="..\..\core\symblbin.h" />
+    <ClInclude Include="..\..\core\symblcmp.h" />
+    <ClInclude Include="..\..\core\symbol.h" />
+    <ClInclude Include="..\..\core\sysdep.h" />
+    <ClInclude Include="..\Source\Interface\Text.h" />
+    <ClInclude Include="..\..\core\textpro.h" />
+    <ClInclude Include="..\..\core\tmpltbin.h" />
+    <ClInclude Include="..\..\core\tmpltbsc.h" />
+    <ClInclude Include="..\..\core\tmpltcmp.h" />
+    <ClInclude Include="..\..\core\tmpltdef.h" />
+    <ClInclude Include="..\..\core\tmpltfun.h" />
+    <ClInclude Include="..\..\core\tmpltlhs.h" />
+    <ClInclude Include="..\..\core\tmpltpsr.h" />
+    <ClInclude Include="..\..\core\tmpltrhs.h" />
+    <ClInclude Include="..\..\core\tmpltutl.h" />
+    <ClInclude Include="..\..\core\userdata.h" />
+    <ClInclude Include="..\..\core\usrsetup.h" />
+    <ClInclude Include="..\..\core\utility.h" />
+    <ClInclude Include="..\..\core\watch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Source\Interface\mdiclips.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
