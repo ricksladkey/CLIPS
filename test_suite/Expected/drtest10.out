@@ -1,0 +1,173 @@
+TRUE
+CLIPS> (batch "drtest10.bat")
+TRUE
+CLIPS> (clear)                   ; Memory Leak #1
+CLIPS> (progn (release-mem) TRUE)
+TRUE
+CLIPS> (mem-used)
+1697966  ;; Can be different
+CLIPS> (defclass SOURCE (is-a USER))
+CLIPS> 
+(deffunction foo()
+   (do-for-all-instances ((?x SOURCE)) TRUE
+      (bind ?y 0)
+      (bogus)))
+
+[EXPRNPSR3] Missing function declaration for bogus.
+
+[PRNTUTIL2] Syntax Error:  Check appropriate syntax for instance-set query function.
+
+ERROR:
+(deffunction MAIN::foo
+   ()
+   (do-for-all-instances ((?x SOURCE))
+      TRUE
+      (bind ?y 0)
+      (
+CLIPS> (clear)                   ; Memory Leak #2
+CLIPS> (progn (release-mem) TRUE)
+TRUE
+CLIPS> (mem-used)
+1698150 ;; Reference mem-used number
+CLIPS> (defclass SOURCE (is-a USER))
+CLIPS> 
+(deffunction foo()
+   (do-for-all-instances ((?x SOURCE)) (progn (bind ?y 3) (bogus) TRUE)
+      (+ 3 4)))
+
+[EXPRNPSR3] Missing function declaration for bogus.
+
+ERROR:
+(deffunction MAIN::foo
+   ()
+   (do-for-all-instances ((?x SOURCE))
+      (progn
+         (bind ?y 3)
+         (
+CLIPS> (clear)                   ; Memory Leak #3
+CLIPS> (progn (release-mem) TRUE)
+TRUE
+CLIPS> (mem-used)
+1698150 ;; Should be the same as above
+CLIPS> (deftemplate SOURCE)
+CLIPS> 
+(deffunction foo()
+   (do-for-all-facts ((?x SOURCE)) TRUE
+      (bind ?y 0)
+      (bogus)))
+
+[EXPRNPSR3] Missing function declaration for bogus.
+
+[PRNTUTIL2] Syntax Error:  Check appropriate syntax for fact-set query function.
+
+ERROR:
+(deffunction MAIN::foo
+   ()
+   (do-for-all-facts ((?x SOURCE))
+      TRUE
+      (bind ?y 0)
+      (
+CLIPS> (clear)                   ; Memory Leak #41
+CLIPS> (progn (release-mem) TRUE)
+TRUE
+CLIPS> (mem-used)
+1698150 ;; Should be the same as above
+CLIPS> (deftemplate SOURCE)
+CLIPS> 
+(deffunction foo()
+   (do-for-all-facts ((?x SOURCE)) (progn (bind ?y 3) (bogus) TRUE)
+      (+ 3 4)))
+
+[EXPRNPSR3] Missing function declaration for bogus.
+
+ERROR:
+(deffunction MAIN::foo
+   ()
+   (do-for-all-facts ((?x SOURCE))
+      (progn
+         (bind ?y 3)
+         (
+CLIPS> (clear)                   ; Memory Leak #5
+CLIPS> (progn (release-mem) TRUE)
+TRUE
+CLIPS> (mem-used)
+1698150 ;; Should be the same as above
+CLIPS> 
+(defclass FOO (is-a USER)
+   (slot value1))
+CLIPS> 
+(deffunction foo ()
+   (make-instance of FOO
+      (value1 (bogus))))
+
+[EXPRNPSR3] Missing function declaration for bogus.
+
+ERROR:
+(deffunction MAIN::foo
+   ()
+   (make-instance of FOO
+      (value1 (bogus
+CLIPS> (clear)                   ; Memory Leak #6
+CLIPS> (progn (release-mem) TRUE)
+TRUE
+CLIPS> (mem-used)
+1698150 ;; Should be the same as above
+CLIPS> 
+(deftemplate FOO
+   (slot value1 (type SYMBOL)))
+CLIPS> 
+(defrule foo
+   (FOO (value1 ?x))
+   =>
+   (+ ?x 1)
+   (printout t ?x))
+
+[RULECSTR3] Previous variable bindings of ?x caused the type restrictions
+for argument #1 of the expression (+ ?x 1)
+found in the rule's RHS to be violated.
+
+ERROR:
+(defrule MAIN::foo
+   (FOO (value1 ?x))
+   =>
+   (+ ?x 1)
+   (printout t ?x))
+CLIPS> (clear)
+CLIPS> (progn (release-mem) TRUE)
+TRUE
+CLIPS> (mem-used)
+1698150 ;; Should be the same as above
+CLIPS> (clear)
+CLIPS> 
+(deftemplate nar 
+   (slot bc))
+CLIPS> 
+(defrule migrant 
+   (test (eq 1 1))
+   (nar (bc ?bc))
+   =>
+   (printout t ?bc crlf))
+CLIPS> 
+(deffacts stuff
+   (nar  (bc "US")))
+CLIPS> (reset)
+CLIPS> (run)
+US
+CLIPS> (clear)                   ; SourceForge Bug #12
+CLIPS> (defclass Test (is-a USER) (multislot Contents))
+CLIPS> (make-instance of Test (Contents a b c d e f g h))
+[gen508]
+CLIPS> 
+(defrule BrokenPatternMatchBehavior-Object
+   (object (is-a Test) 
+           (Contents $?first ?second ?third $?fourth ?fifth))
+   =>
+   (printout t ?first " " ?second " " ?third " " ?fourth " " ?fifth crlf))
+CLIPS> (run)
+(a b c d e) f g () h
+(a b c d) e f (g) h
+(a b c) d e (f g) h
+(a b) c d (e f g) h
+(a) b c (d e f g) h
+() a b (c d e f g) h
+CLIPS> (dribble-off)

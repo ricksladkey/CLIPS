@@ -1,0 +1,35 @@
+﻿# Properties Source File for Russian
+# Generate the properties file from this file using the following command:
+# native2ascii -encoding UTF-8 AutoResources_ru.source AutoResources_ru.properties
+AutoDemo=Демонстрация диагностики автомобиля
+No=Нет
+Yes=Да
+Normal=В порядке
+Burned=Прогоревшие
+Contaminated=Загрязненные
+Next=Далее
+Prev=Назад
+Restart=Начать сначала
+WelcomeMessage=Добро пожаловать в экспертную систему диагностики двигателя.
+StartQuestion=Заводится ли двигатель?
+RunQuestion=Двигатель работает ровно и в нормальном режиме?
+RotateQuestion=Двигатель проворачивается стартером?
+SluggishQuestion=Двигатель работает на слишком низких оборотах?
+MisfireQuestion=Существуют перебои в зажигании?
+KnockQuestion=Двигатель стучит во время работы?
+OutputQuestion=Двигатель выдает слишком мало мощности?
+GasQuestion=Есть ли горючее в баке?
+BatteryQuestion=Заряжен ли аккумулятор?
+PointsQuestion=Каково состояние свечей зажигание?
+CoilQuestion=Тестирование проводимости катушки зажигания дает положительный результат?
+NoRepair=Рекомендуемый ремонт: нет.
+FuelLineRepair=Рекомендуемый ремонт: прочистка линии подачи топлива.
+PointGapRepair=Рекомендуемый ремонт: регулировка зазора свечей зажигания.
+AdjustTimingRepair=Рекомендуемый ремонт: регулировка угла опережения зажигания.
+AddGasRepair=Рекомендуемый ремонт: заливка топлива в бак.
+ReplaceBatteryRepair=Рекомендуемый ремонт: зарядка батареи.
+ReplacePointsRepair=Рекомендуемый ремонт: замена свечей зажигания.
+CleanPointsRepair=Рекомендуемый ремонт: очистка свечей зажигания.
+LeadWireRepair=Рекомендуемый ремонт: замена проводки распределителя зажигания.
+CoilRepair=Рекомендуемый ремонт: заменить катушки зажигания.
+MechanicRepair=Рекомендуемый ремонт: доверить ремонт автомобиля профессиональным механикам.
