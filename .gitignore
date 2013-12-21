@@ -1,0 +1,15 @@
+*.obj
+*.dll
+*.lib
+*.exe
+*.suo
+*.ilk
+*.pdb
+*.exp
+*.sdf
+*.opensdf
+*.tds
+*.user
+VS2012/Debug/
+VS2012/Release/
+VS2012/x64/
